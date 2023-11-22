@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <script
+            src="https://code.jquery.com/jquery-3.7.1.min.js"
+            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+            crossorigin="anonymous"
+        ></script>
+        <style>
+            .redBorder {
+                border: 1px solid red;
+            }
+        </style>
+    </head>
+    <body>
+        <div>
+            <p id="logout_timer_counter"></p>
+        </div>
+
+        <script type="module">
+            import logoutCountDown from './LogoutCountDownTimer.js';
+            const logoutTimer = new logoutCountDown(
+                30,
+                () => document.title = 'last page action', 
+                () => document.title = 'other page action'
+            );
+            logoutTimer.countDownTimer(
+                (timer, isThisLastPage) => document.title = ('timer:' + timer + ', lastPage:' + isThisLastPage)
+            );
+        </script>
+    </body>
+</html>
